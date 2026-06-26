@@ -1,4 +1,4 @@
-baseURL = "https://mars-tilu.github.io/"
+baseURL = "https://mars-tilu.github.io/blog-source/"
 languageCode = "zh-cn"
 title = "我的个人博客"
 theme = "PaperMod"
