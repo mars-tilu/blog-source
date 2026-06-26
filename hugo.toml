@@ -5,80 +5,101 @@ title = "我的个人博客"
 theme = "PaperMod"
 
 # 网站元信息
-[params]
+[
+params
+]
   author = "mars-tilu"
   description = "使用Hugo+PaperMod搭建的个人技术博客"
   keywords = "Hugo,博客,技术分享,GitHub Pages"
   DateFormat = "2006-01-02"
-  defaultTheme = "auto" # auto / light / dark
-  disableThemeToggle = false # 开启明暗切换按钮
+  defaultTheme = "auto"
+  disableThemeToggle = false
 
-  # 首页文章配置
   homeInfoParams = {
     Title = "欢迎来到我的博客",
     Content = "记录学习、踩坑与技术分享，持续更新中～"
   }
-  ShowPostNavLinks = true    # 文章底部显示上一篇/下一篇
-  ShowBreadCrumbs = true     # 面包屑导航
-  ShowCodeCopyButtons = true # 代码块复制按钮
-  ShowWordCount = true       # 显示文章字数
-  ShowReadingTime = true     # 显示阅读时长
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowReadingTime = true
   ShowFullTextinRSS = true
 
-  # 搜索功能
-  [params.search]
+  [
+params.search
+]
     enable = true
     type = "fuse"
     fuseIndexPath = "index.json"
     searchHidden = true
 
-  # 侧边栏目录（文章长文自动生成）
-  [params.toc]
+  [
+params.toc
+]
     enable = true
     keepStatic = true
     close = false
 
 # 导航菜单
-[menu]
-  [[menu.main]]
+[
+menu
+]
+  [[
+menu.main
+]]
     name = "首页"
     url = "/"
     weight = 1
-  [[menu.main]]
+  [[
+menu.main
+]]
     name = "文章"
     url = "/posts/"
     weight = 2
-  [[menu.main]]
+  [[
+menu.main
+]]
     name = "分类"
     url = "/categories/"
     weight = 3
-  [[menu.main]]
+  [[
+menu.main
+]]
     name = "标签"
     url = "/tags/"
     weight = 4
-  [[menu.main]]
+  [[
+menu.main
+]]
     name = "关于"
     url = "/about/"
     weight = 5
 
-# 开启页面生成
-[outputFormats]
-[outputFormats.RSS]
+[
+outputFormats
+]
+[
+outputFormats.RSS
+]
 baseName = "index"
 isPlainText = false
 
-# 生成页面列表
-[output]
+[
+output
+]
 home = ["HTML", "RSS"]
 page = ["HTML"]
 section = ["HTML", "RSS"]
 taxonomy = ["HTML", "RSS"]
 taxonomyTerm = ["HTML", "RSS"]
 
-# 分页配置
-[paginate]
+[
+paginate
+]
 pageSize = 8
 
-# 禁止生成无用文件
-[build]
+[
+build
+]
 writeStats = true
