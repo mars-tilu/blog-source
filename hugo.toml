@@ -1,105 +1,33 @@
-# 基础站点配置
 baseURL = "https://mars-tilu.github.io/blog-source/"
 languageCode = "zh-cn"
 title = "我的个人博客"
 theme = "PaperMod"
 
-# 网站元信息
 [
 params
 ]
-  author = "mars-tilu"
-  description = "使用Hugo+PaperMod搭建的个人技术博客"
-  keywords = "Hugo,博客,技术分享,GitHub Pages"
-  DateFormat = "2006-01-02"
-  defaultTheme = "auto"
-  disableThemeToggle = false
+author = "mars-tilu"
+defaultTheme = "auto"
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
 
-  homeInfoParams = {
-    Title = "欢迎来到我的博客",
-    Content = "记录学习、踩坑与技术分享，持续更新中～"
-  }
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowReadingTime = true
-  ShowFullTextinRSS = true
-
-  [
-params.search
-]
-    enable = true
-    type = "fuse"
-    fuseIndexPath = "index.json"
-    searchHidden = true
-
-  [
-params.toc
-]
-    enable = true
-    keepStatic = true
-    close = false
-
-# 导航菜单
 [
 menu
 ]
-  [[
+[[
 menu.main
 ]]
-    name = "首页"
-    url = "/"
-    weight = 1
-  [[
+name = "首页"
+url = "/"
+weight = 1
+[[
 menu.main
 ]]
-    name = "文章"
-    url = "/posts/"
-    weight = 2
-  [[
-menu.main
-]]
-    name = "分类"
-    url = "/categories/"
-    weight = 3
-  [[
-menu.main
-]]
-    name = "标签"
-    url = "/tags/"
-    weight = 4
-  [[
-menu.main
-]]
-    name = "关于"
-    url = "/about/"
-    weight = 5
-
-[
-outputFormats
-]
-[
-outputFormats.RSS
-]
-baseName = "index"
-isPlainText = false
-
-[
-output
-]
-home = ["HTML", "RSS"]
-page = ["HTML"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML", "RSS"]
-taxonomyTerm = ["HTML", "RSS"]
+name = "文章"
+url = "/posts/"
+weight = 2
 
 [
 paginate
 ]
 pageSize = 8
-
-[
-build
-]
-writeStats = true
