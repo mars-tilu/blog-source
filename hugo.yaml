@@ -1,0 +1,74 @@
+# 基础站点配置
+baseURL: "https://mars-tilu.github.io/blog-source/"
+languageCode: "zh-cn"
+title: "我的个人博客"
+theme: "PaperMod"
+
+# 网站元信息
+params:
+  author: "mars-tilu"
+  description: "使用Hugo+PaperMod搭建的个人技术博客"
+  keywords: ["Hugo", "博客", "技术分享", "GitHub Pages"]
+  DateFormat: "2006-01-02"
+  defaultTheme: "auto"
+  disableThemeToggle: false
+
+  homeInfoParams:
+    Title: "欢迎来到我的博客"
+    Content: "记录学习、踩坑与技术分享，持续更新中～"
+
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowReadingTime: true
+  ShowFullTextinRSS: true
+
+  search:
+    enable: true
+    type: "fuse"
+    fuseIndexPath: "index.json"
+    searchHidden: true
+
+  toc:
+    enable: true
+    keepStatic: true
+    close: false
+
+# 导航菜单
+menu:
+  main:
+    - name: "首页"
+      url: "/"
+      weight: 1
+    - name: "文章"
+      url: "/posts/"
+      weight: 2
+    - name: "分类"
+      url: "/categories/"
+      weight: 3
+    - name: "标签"
+      url: "/tags/"
+      weight: 4
+    - name: "关于"
+      url: "/about/"
+      weight: 5
+
+outputFormats:
+  RSS:
+    baseName: "index"
+    isPlainText: false
+
+output:
+  home: ["HTML", "RSS"]
+  page: ["HTML"]
+  section: ["HTML", "RSS"]
+  taxonomy: ["HTML", "RSS"]
+  taxonomyTerm: ["HTML", "RSS"]
+
+# 新版Hugo分页配置
+pagination:
+  pagerSize: 8
+
+build:
+  writeStats: true
