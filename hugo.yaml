@@ -1,7 +1,7 @@
 # 基础站点配置
 baseURL: "https://mars-tilu.github.io/blog-source/"
 languageCode: "zh-cn"
-title: "我的个人博客"
+title: "清醒一点·大胆一点"
 theme: "PaperMod"
 
 # 网站元信息
@@ -14,8 +14,8 @@ params:
   disableThemeToggle: false
 
   homeInfoParams:
-    Title: "欢迎来到我的博客"
-    Content: "记录学习、踩坑与技术分享，持续更新中～"
+    Title: "欢迎来到我的博客,饼我吃不下了"
+    Content: "日常记录、学习内容，踩坑与技术分享，持续更新中～"
 
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
