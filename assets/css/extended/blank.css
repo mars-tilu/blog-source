@@ -1,0 +1,18 @@
+/* 同时选中两层容器，提升权重，强制覆盖 */
+article.first-entry.home-info {
+  min-height: 160px !important; /* 按需调低最小高度，数值越小整体留白越少 */
+  padding-top: 0.5rem !important;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+}
+/* 文字容器内边距，控制左右留白 */
+.home-info .profile_inner {
+  padding-inline: 1rem !important;
+}
+/* 标题与副标题间距压缩 */
+.home-info h1 {
+  margin-bottom: 0.3rem !important;
+}
+.home-info p {
+  margin-top: 0 !important;
+}
