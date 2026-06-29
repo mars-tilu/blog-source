@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Posts on 清醒一点·大胆一点</title><link>https://mars-tilu.github.io/blog-source/posts/</link><description>Recent content in Posts on 清醒一点·大胆一点</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Thu, 25 Jun 2026 14:12:39 +0800</lastBuildDate><atom:link href="https://mars-tilu.github.io/blog-source/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>GitHub + Hugo博客搭建</title><link>https://mars-tilu.github.io/blog-source/posts/first-post/</link><pubDate>Thu, 25 Jun 2026 14:12:39 +0800</pubDate><guid>https://mars-tilu.github.io/blog-source/posts/first-post/</guid><description>&lt;h5 id="介绍"&gt;介绍：&lt;/h5&gt;
+&lt;p&gt;  Git + Hugo 搭建个人博客性能极致，访问飞快，纯静态页面，无后端服务Hugo 本地一次性把所有页面生成 HTML、CSS、JS，部署后服务器只分发静态文件，没有数据库、接口查询，打开速度远超 WordPress、Typecho 等动态博客。搭配 Git 仓库直接部署，不需要购买云服务器、域名（也可绑定自有域名），个人使用无流量、存储限制。&lt;/p&gt;
+&lt;h6 id="1hugo安装"&gt;1.Hugo安装&lt;/h6&gt;
+&lt;p&gt;打开官方发布页：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-http" data-lang="http"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;https://github.com/gohugoio/hugo/releases
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;拉到最下方 Assets，找到 Windows 安装包
+下载 zip 压缩包
+放到本地并解压，配置环境变量（不懂配置请百 度或AI）&lt;/p&gt;
+&lt;h6 id="2github配置及安装此处不进行详细介绍"&gt;2.Github配置及安装（此处不进行详细介绍）&lt;/h6&gt;
+&lt;h5 id="一单仓库actions-自动打包"&gt;一、单仓库（Actions 自动打包）&lt;/h5&gt;
+&lt;h6 id="1仅创建-1-个仓库blog-source用-github-actions-自动构建并部署-pages"&gt;1.仅创建 1 个仓库blog-source，用 GitHub Actions 自动构建并部署 Pages&lt;/h6&gt;
+&lt;h6 id="2创建一个项目"&gt;2.创建一个项目:&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; site myblog
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h6 id="3拉取-papermod-主题子模块方式git-同步不丢文件"&gt;3.拉取 PaperMod 主题（子模块方式，git 同步不丢文件）&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git submodule add https:&lt;span style="color:#75715e"&gt;//github.com/adityatelange/hugo-PaperMod.git themes/PaperMod&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git submodule update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h6 id="4基础配置-hugoyaml"&gt;4.基础配置 hugo.yaml&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;baseURL: &lt;span style="color:#e6db74"&gt;&amp;#34;https://mars-tilu.github.io/blog-source/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;languageCode: &lt;span style="color:#e6db74"&gt;&amp;#34;zh-cn&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;title: &lt;span style="color:#e6db74"&gt;&amp;#34;我的个人博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;theme: &lt;span style="color:#e6db74"&gt;&amp;#34;PaperMod&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;#&lt;/span&gt; 网站元信息
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;params:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;author: &lt;span style="color:#e6db74"&gt;&amp;#34;mars-tilu&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;description: &lt;span style="color:#e6db74"&gt;&amp;#34;使用Hugo+PaperMod搭建的个人技术博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;keywords: &lt;span style="color:#f92672"&gt;[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;Hugo&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;博客&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;技术分享&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;GitHub Pages&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;DateFormat: &lt;span style="color:#e6db74"&gt;&amp;#34;2006-01-02&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;defaultTheme: &lt;span style="color:#e6db74"&gt;&amp;#34;auto&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;disableThemeToggle: &lt;span style="color:#66d9ef"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;homeInfoParams:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Title: &lt;span style="color:#e6db74"&gt;&amp;#34;欢迎来到我的博客&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Content: &lt;span style="color:#e6db74"&gt;&amp;#34;记录学习、踩坑与技术分享，持续更新中～&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ShowPostNavLinks: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ShowBreadCrumbs: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ShowCodeCopyButtons: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ShowWordCount: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ShowReadingTime: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ShowFullTextinRSS: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;search:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; enable: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; type: &lt;span style="color:#e6db74"&gt;&amp;#34;fuse&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fuseIndexPath: &lt;span style="color:#e6db74"&gt;&amp;#34;index.json&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; searchHidden: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;toc:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; enable: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; keepStatic: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; close: &lt;span style="color:#66d9ef"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;#&lt;/span&gt; 导航菜单
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;menu:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;main:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; name: &lt;span style="color:#e6db74"&gt;&amp;#34;首页&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; url: &lt;span style="color:#e6db74"&gt;&amp;#34;/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weight: 1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; name: &lt;span style="color:#e6db74"&gt;&amp;#34;文章&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; url: &lt;span style="color:#e6db74"&gt;&amp;#34;/posts/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weight: 2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; name: &lt;span style="color:#e6db74"&gt;&amp;#34;分类&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; url: &lt;span style="color:#e6db74"&gt;&amp;#34;/categories/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weight: 3
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; name: &lt;span style="color:#e6db74"&gt;&amp;#34;标签&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; url: &lt;span style="color:#e6db74"&gt;&amp;#34;/tags/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weight: 4
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; name: &lt;span style="color:#e6db74"&gt;&amp;#34;关于&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; url: &lt;span style="color:#e6db74"&gt;&amp;#34;/about/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weight: 5
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;outputFormats:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;RSS:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; baseName: &lt;span style="color:#e6db74"&gt;&amp;#34;index&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; isPlainText: &lt;span style="color:#66d9ef"&gt;false&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;output:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;home: &lt;span style="color:#f92672"&gt;[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;RSS&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;page: &lt;span style="color:#f92672"&gt;[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;section: &lt;span style="color:#f92672"&gt;[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;RSS&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;taxonomy: &lt;span style="color:#f92672"&gt;[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;RSS&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;taxonomyTerm: &lt;span style="color:#f92672"&gt;[&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;RSS&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;#&lt;/span&gt; 新版Hugo分页配置
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pagination:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pagerSize: 8
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;build:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;writeStats: &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h6 id="5新建第一篇文章"&gt;5.新建第一篇文章&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-java" data-lang="java"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo &lt;span style="color:#66d9ef"&gt;new&lt;/span&gt; content&lt;span style="color:#f92672"&gt;/&lt;/span&gt;posts&lt;span style="color:#f92672"&gt;/&lt;/span&gt;first&lt;span style="color:#f92672"&gt;-&lt;/span&gt;post.&lt;span style="color:#a6e22e"&gt;md&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打开文件，修改draft = false（草稿关闭才能显示），写入正文、封面图配置。&lt;/p&gt;</description><content:encoded><![CDATA[<h5 id="介绍">介绍：</h5>
+<p>    Git + Hugo 搭建个人博客性能极致，访问飞快，纯静态页面，无后端服务Hugo 本地一次性把所有页面生成 HTML、CSS、JS，部署后服务器只分发静态文件，没有数据库、接口查询，打开速度远超 WordPress、Typecho 等动态博客。搭配 Git 仓库直接部署，不需要购买云服务器、域名（也可绑定自有域名），个人使用无流量、存储限制。</p>
+<h6 id="1hugo安装">1.Hugo安装</h6>
+<p>打开官方发布页：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">https://github.com/gohugoio/hugo/releases
+</span></span></span></code></pre></div><p>拉到最下方 Assets，找到 Windows 安装包
+下载 zip 压缩包
+放到本地并解压，配置环境变量（不懂配置请百                    度或AI）</p>
+<h6 id="2github配置及安装此处不进行详细介绍">2.Github配置及安装（此处不进行详细介绍）</h6>
+<h5 id="一单仓库actions-自动打包">一、单仓库（Actions 自动打包）</h5>
+<h6 id="1仅创建-1-个仓库blog-source用-github-actions-自动构建并部署-pages">1.仅创建 1 个仓库blog-source，用 GitHub Actions 自动构建并部署 Pages</h6>
+<h6 id="2创建一个项目">2.创建一个项目:</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hugo <span style="color:#66d9ef">new</span> site myblog
+</span></span></code></pre></div><h6 id="3拉取-papermod-主题子模块方式git-同步不丢文件">3.拉取 PaperMod 主题（子模块方式，git 同步不丢文件）</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https:<span style="color:#75715e">//github.com/adityatelange/hugo-PaperMod.git themes/PaperMod</span>
+</span></span><span style="display:flex;"><span>git submodule update
+</span></span></code></pre></div><h6 id="4基础配置-hugoyaml">4.基础配置 hugo.yaml</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>baseURL: <span style="color:#e6db74">&#34;https://mars-tilu.github.io/blog-source/&#34;</span>
+</span></span><span style="display:flex;"><span>languageCode: <span style="color:#e6db74">&#34;zh-cn&#34;</span>
+</span></span><span style="display:flex;"><span>title: <span style="color:#e6db74">&#34;我的个人博客&#34;</span>
+</span></span><span style="display:flex;"><span>theme: <span style="color:#e6db74">&#34;PaperMod&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 网站元信息
+</span></span><span style="display:flex;"><span>params:
+</span></span><span style="display:flex;"><span>author: <span style="color:#e6db74">&#34;mars-tilu&#34;</span>
+</span></span><span style="display:flex;"><span>description: <span style="color:#e6db74">&#34;使用Hugo+PaperMod搭建的个人技术博客&#34;</span>
+</span></span><span style="display:flex;"><span>keywords: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Hugo&#34;</span>, <span style="color:#e6db74">&#34;博客&#34;</span>, <span style="color:#e6db74">&#34;技术分享&#34;</span>, <span style="color:#e6db74">&#34;GitHub Pages&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>DateFormat: <span style="color:#e6db74">&#34;2006-01-02&#34;</span>
+</span></span><span style="display:flex;"><span>defaultTheme: <span style="color:#e6db74">&#34;auto&#34;</span>
+</span></span><span style="display:flex;"><span>disableThemeToggle: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>homeInfoParams:
+</span></span><span style="display:flex;"><span>    Title: <span style="color:#e6db74">&#34;欢迎来到我的博客&#34;</span>
+</span></span><span style="display:flex;"><span>    Content: <span style="color:#e6db74">&#34;记录学习、踩坑与技术分享，持续更新中～&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ShowPostNavLinks: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>ShowBreadCrumbs: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>ShowCodeCopyButtons: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>ShowWordCount: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>ShowReadingTime: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>ShowFullTextinRSS: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>search:
+</span></span><span style="display:flex;"><span>    enable: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    type: <span style="color:#e6db74">&#34;fuse&#34;</span>
+</span></span><span style="display:flex;"><span>    fuseIndexPath: <span style="color:#e6db74">&#34;index.json&#34;</span>
+</span></span><span style="display:flex;"><span>    searchHidden: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>toc:
+</span></span><span style="display:flex;"><span>    enable: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    keepStatic: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    close: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 导航菜单
+</span></span><span style="display:flex;"><span>menu:
+</span></span><span style="display:flex;"><span>main:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;首页&#34;</span>
+</span></span><span style="display:flex;"><span>    url: <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>    weight: 1
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;文章&#34;</span>
+</span></span><span style="display:flex;"><span>    url: <span style="color:#e6db74">&#34;/posts/&#34;</span>
+</span></span><span style="display:flex;"><span>    weight: 2
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;分类&#34;</span>
+</span></span><span style="display:flex;"><span>    url: <span style="color:#e6db74">&#34;/categories/&#34;</span>
+</span></span><span style="display:flex;"><span>    weight: 3
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;标签&#34;</span>
+</span></span><span style="display:flex;"><span>    url: <span style="color:#e6db74">&#34;/tags/&#34;</span>
+</span></span><span style="display:flex;"><span>    weight: 4
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;关于&#34;</span>
+</span></span><span style="display:flex;"><span>    url: <span style="color:#e6db74">&#34;/about/&#34;</span>
+</span></span><span style="display:flex;"><span>    weight: 5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>outputFormats:
+</span></span><span style="display:flex;"><span>RSS:
+</span></span><span style="display:flex;"><span>    baseName: <span style="color:#e6db74">&#34;index&#34;</span>
+</span></span><span style="display:flex;"><span>    isPlainText: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output:
+</span></span><span style="display:flex;"><span>home: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>page: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>section: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>taxonomy: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>taxonomyTerm: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 新版Hugo分页配置
+</span></span><span style="display:flex;"><span>pagination:
+</span></span><span style="display:flex;"><span>pagerSize: 8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>build:
+</span></span><span style="display:flex;"><span>writeStats: <span style="color:#66d9ef">true</span>   
+</span></span></code></pre></div><h6 id="5新建第一篇文章">5.新建第一篇文章</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hugo <span style="color:#66d9ef">new</span> content<span style="color:#f92672">/</span>posts<span style="color:#f92672">/</span>first<span style="color:#f92672">-</span>post.<span style="color:#a6e22e">md</span>
+</span></span></code></pre></div><p>打开文件，修改draft = false（草稿关闭才能显示），写入正文、封面图配置。</p>
+<h6 id="6创建关于页">6.创建关于页</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hugo <span style="color:#66d9ef">new</span> content<span style="color:#f92672">/</span>about<span style="color:#f92672">/</span>_index.<span style="color:#a6e22e">md</span>
+</span></span></code></pre></div><p>_index.md代表独立页面，访问/about/。</p>
+<h6 id="7静态资源存放图片背景图">7.静态资源存放（图片、背景图）</h6>
+<p>​	static/images/：文章配图、背景图，本地hugo server可直接访问，无 404</p>
+<p>​	assets/css/：自定义样式文件</p>
+<p>​	layouts/partials/extend_head.html：全局注入样式，修改背景、页面留白</p>
+<h6 id="8本地预览调试">8.本地预览调试</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hugo server <span style="color:#f92672">-</span>D <span style="color:#f92672">--</span>gc
+</span></span></code></pre></div><h6 id="9git-本地提交--推送-github">9.Git 本地提交 &amp; 推送 GitHub</h6>
+<p>​	 (1)关联远程仓库（替换为你的仓库地址）:
+​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>git remote add origin https:<span style="color:#75715e">//github.com/你的用户名/blog-source.git</span>
+</span></span></code></pre></div><p>​	 (2)提交全部修改</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit <span style="color:#f92672">-</span>m <span style="color:#e6db74">&#34;更新文章、背景样式、页面留白优化&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin main
+</span></span></code></pre></div><h6 id="10github-actions-自动部署核心自动构建上线">10.GitHub Actions 自动部署（核心，自动构建上线）</h6>
+<p>(1)在项目根目录新建文件夹 .github/workflows/
+创建文件 deploy.yml，粘贴部署脚本，作用：推送代码后自动构建静态文件，部署到 GitHub Pages</p>
+<p>(2)GitHub 仓库设置：
+Settings → Pages → Build and deployment 选择 GitHub Actions
+推送代码后，仓库 Actions 自动运行，几分钟后访问</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">https://你的用户名.github.io/blog-source/
+</span></span></span></code></pre></div><h5 id="补充deployyml文件内容">补充：deploy.yml文件内容:</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 基础站点配置
+</span></span><span style="display:flex;"><span>baseURL: <span style="color:#e6db74">&#34;https://你的用户名.github.io/blog-source/&#34;</span>
+</span></span><span style="display:flex;"><span>languageCode: <span style="color:#e6db74">&#34;zh-cn&#34;</span>
+</span></span><span style="display:flex;"><span>title: <span style="color:#e6db74">&#34;我的个人博客&#34;</span>
+</span></span><span style="display:flex;"><span>theme: <span style="color:#e6db74">&#34;PaperMod&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 网站元信息
+</span></span><span style="display:flex;"><span>params:
+</span></span><span style="display:flex;"><span>  author: <span style="color:#e6db74">&#34;你的用户名&#34;</span>
+</span></span><span style="display:flex;"><span>  description: <span style="color:#e6db74">&#34;使用Hugo+PaperMod搭建的个人技术博客&#34;</span>
+</span></span><span style="display:flex;"><span>  keywords: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Hugo&#34;</span>, <span style="color:#e6db74">&#34;博客&#34;</span>, <span style="color:#e6db74">&#34;技术分享&#34;</span>, <span style="color:#e6db74">&#34;GitHub Pages&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  DateFormat: <span style="color:#e6db74">&#34;2006-01-02&#34;</span>
+</span></span><span style="display:flex;"><span>  defaultTheme: <span style="color:#e6db74">&#34;auto&#34;</span>
+</span></span><span style="display:flex;"><span>  disableThemeToggle: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  homeInfoParams:
+</span></span><span style="display:flex;"><span>    Title: <span style="color:#e6db74">&#34;欢迎来到我的博客&#34;</span>
+</span></span><span style="display:flex;"><span>    Content: <span style="color:#e6db74">&#34;记录学习、踩坑与技术分享，持续更新中～&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ShowPostNavLinks: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  ShowBreadCrumbs: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  ShowCodeCopyButtons: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  ShowWordCount: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  ShowReadingTime: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  ShowFullTextinRSS: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  search:
+</span></span><span style="display:flex;"><span>    enable: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    type: <span style="color:#e6db74">&#34;fuse&#34;</span>
+</span></span><span style="display:flex;"><span>    fuseIndexPath: <span style="color:#e6db74">&#34;index.json&#34;</span>
+</span></span><span style="display:flex;"><span>    searchHidden: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  toc:
+</span></span><span style="display:flex;"><span>    enable: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    keepStatic: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    close: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 导航菜单
+</span></span><span style="display:flex;"><span>menu:
+</span></span><span style="display:flex;"><span>  main:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;首页&#34;</span>
+</span></span><span style="display:flex;"><span>      url: <span style="color:#e6db74">&#34;/&#34;</span>
+</span></span><span style="display:flex;"><span>      weight: 1
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;文章&#34;</span>
+</span></span><span style="display:flex;"><span>      url: <span style="color:#e6db74">&#34;/posts/&#34;</span>
+</span></span><span style="display:flex;"><span>      weight: 2
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;分类&#34;</span>
+</span></span><span style="display:flex;"><span>      url: <span style="color:#e6db74">&#34;/categories/&#34;</span>
+</span></span><span style="display:flex;"><span>      weight: 3
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;标签&#34;</span>
+</span></span><span style="display:flex;"><span>      url: <span style="color:#e6db74">&#34;/tags/&#34;</span>
+</span></span><span style="display:flex;"><span>      weight: 4
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">-</span> name: <span style="color:#e6db74">&#34;关于&#34;</span>
+</span></span><span style="display:flex;"><span>      url: <span style="color:#e6db74">&#34;/about/&#34;</span>
+</span></span><span style="display:flex;"><span>      weight: 5
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>outputFormats:
+</span></span><span style="display:flex;"><span>  RSS:
+</span></span><span style="display:flex;"><span>    baseName: <span style="color:#e6db74">&#34;index&#34;</span>
+</span></span><span style="display:flex;"><span>    isPlainText: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output:
+</span></span><span style="display:flex;"><span>  home: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  page: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  section: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  taxonomy: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  taxonomyTerm: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;HTML&#34;</span>, <span style="color:#e6db74">&#34;RSS&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">#</span> 新版Hugo分页配置
+</span></span><span style="display:flex;"><span>pagination:
+</span></span><span style="display:flex;"><span>  pagerSize: 8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>build:
+</span></span><span style="display:flex;"><span>  writeStats: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div>]]></content:encoded></item></channel></rss>
